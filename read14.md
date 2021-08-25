@@ -1,108 +1,73 @@
-# Read: Trees
+# Event Driven Application
 
-Some important concepts in trees: 
-
-- Node - A Tree node is a component which may contain it’s own values, and references to other nodes
-- Root - The root is the node at the beginning of the tree
-- K - A number that specifies the maximum number of children any node may have in a k-ary tree. In a binary tree, k = 2.
-- Left - A reference to one child node, in a binary tree
-- Right - A reference to the other child node, in a binary tree
-- Edge - The edge in a tree is the link between a parent and child node
-- Leaf - A leaf is a node that does not have any children
-- Height - The height of a tree is the number of edges from the root to the furthest leaf
-
-***
-
-Types of Traversals:
-- Depth First
-- Breadth First
-
-#### Depth first
-
-Depth first traversal is where we prioritize going through the depth (height) of the tree first.
-methods for depth first traversal:
-
-Pre-order: ```root >> left >> right```
-
-```
-ALGORITHM preOrder(root)
-// INPUT <-- root node
-// OUTPUT <-- pre-order output of tree node's values
-
-    OUTPUT <-- root.value
-
-    if root.left is not Null
-        preOrder(root.left)
-
-    if root.right is not NULL
-        preOrder(root.right)
-```
-
-In-order: ```left >> root >> right```
-
-```
-ALGORITHM inOrder(root)
-// INPUT <-- root node
-// OUTPUT <-- in-order output of tree node's values
-
-    if root.left is not NULL
-        inOrder(root.left)
-
-    OUTPUT <-- root.value
-
-    if root.right is not NULL
-        inOrder(root.right)
-```
-
-Post-order: ```left >> right >> root```
-
-```
-ALGORITHM postOrder(root)
-// INPUT <-- root node
-// OUTPUT <-- post-order output of tree node's values
-
-    if root.left is not NULL
-        postOrder(root.left)
-
-    if root.right is not NULL
-        postOrder(root.right)
-
-    OUTPUT <-- root.value
-```
+## Review, Research, and Discussion
 
 
-#### Breadth First
+- Complete file does not have to be downloaded in order to receive output.
+- User can immediately start viewing data even though the complete file has not been transferred over. (Streaming services)
+- UDP does not require a virtural circut to be established before any data transfer occurs
+- a single port can accept 1 or more connections simultaneously
+- The connections would be distinguished by a new variable with a different port or port endpoint
 
-Breadth first traversal iterates through the tree by going through each level of the tree node-by-node.
-breadth first traversal uses a **queue** (instead of the call stack via recursion) to traverse the width/breadth of the tree.
+## Terminology
 
-Pseudocode:
+- Observer Pattern:
+  - Design pattern used for one-to-many relationships
+  - if one object is modified, its dependent relationships are mentioned automatically
 
-```
-ALGORITHM breadthFirst(root)
-// INPUT  <-- root node
-// OUTPUT <-- front node of queue to console
+- Listener:
+  - a code block that is activated by a trigger
 
-  Queue breadth <-- new Queue()
-  breadth.enqueue(root)
+- Event Handler:
+  - block of code (typically a callback) that is ran when the event is called upon
 
-  while breadth.peek()
-    node front = breadth.dequeue()
-    OUTPUT <-- front.value
+- Event Driven Programming:
+  - programming paradigm where flow of program is determined by events/actions that trigger correlating code
 
-    if front.left is not NULL
-      breadth.enqueue(front.left)
+- Event Loop:
+  - monitors call stack and call back queue
+  - if call stack is empty, event loop will take the first event from the queue and will push it to the callstack
 
-    if front.right is not NULL
-      breadth.enqueue(front.right)
-```
+- Event Queue:
+  - design pattern of a queue of events awaiting to be processed by a program
 
-***
+- Call Stack:
+  - a collection of code to be ran
+  - FILO pushes and pops items off a stack
+
+- Emit/Raise/Trigger:
+  - an alarm that when alarmed will actiave/run corresponding code
+
+- Subscribe:
+  - an instance when a person/program decides to make a connection to pass each other data
+
+- Database:
+  - a structured collection of data that can be accessed, modified, and managed
 
 
-## Binary Tree Vs K-ary Trees
+## Preview
 
-| Binary Tree | K-ary Trees |
-| ----------- | ----------- |
-| restrict the number of children to two (left and right) | can have any number of children per node |
-| no specific sorting order for a binary tree | we use K to refer to the maximum number of children that each Node is able to have |
+1. Which 3 things had you heard about previously and now have better clarity on?
+
+- Event Driven Programming, Call Stack, Sockets
+
+2. Which 3 things are you hoping to learn more about in the upcoming lecture/demo?
+
+- The complexities of Socket Io and other uses, Building a chat between 2 people, building a fully operation all that renders and updates information realtime
+
+3. What are you most excited about trying to implement or see how it works?
+
+- Rendering and updating apps in real time
+
+## SNS vs SQS 
+
+### SNS is a distributed publish-subscribe system. Messages are pushed to subscribers as and when they are sent by publishers to SNS.
+
+### SQS is distributed queuing system. Messages are not pushed to receivers. Receivers have to poll or pull messages from SQS. 
+
+#### Messages can't be received by multiple receivers at the same time. Any one receiver can receive a message, process and delete it. 
+
+## References
+
+- https://searchnetworking.techtarget.com/definition/UDP-User-Datagram-Protocol#:~:text=UDP%20(User%20Datagram%20Protocol)%20is,provided%20by%20the%20receiving%20party.
+- https://en.wikipedia.org/wiki/Event-driven_programming
